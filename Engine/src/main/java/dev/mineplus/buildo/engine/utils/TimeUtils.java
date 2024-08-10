@@ -1,9 +1,9 @@
 package dev.mineplus.buildo.engine.utils;
 
-public class TimeUtils {
-    private static final float startTime = System.nanoTime();
+import static org.lwjgl.glfw.GLFW.glfwGetTime;
 
-    public static double getTimeSinceStart() {
-        return (System.nanoTime() - startTime) * 1E-9;
+public class TimeUtils {
+    public static double getTime() {
+        return glfwGetTime();
     }
 }

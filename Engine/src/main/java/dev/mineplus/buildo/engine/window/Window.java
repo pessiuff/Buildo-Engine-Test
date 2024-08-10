@@ -109,19 +109,20 @@ public class Window {
 
         while (!glfwWindowShouldClose(windowHandle)) {
             // Set frame start time
-            frameStartTime = TimeUtils.getTimeSinceStart();
+            frameStartTime = TimeUtils.getTime();
 
             // Poll events
             glfwPollEvents();
 
             // Draw scene
-            sceneManager.getCurrentScene().update(deltaTime);
+            if (deltaTime >= 0)
+                sceneManager.getCurrentScene().update(deltaTime);
 
             // Swap buffers (aka. swap last frame with the current one we're drawing)
             glfwSwapBuffers(windowHandle);
 
             // Set delta time
-            deltaTime = TimeUtils.getTimeSinceStart() - frameStartTime;
+            deltaTime = TimeUtils.getTime() - frameStartTime;
         }
     }
 }
