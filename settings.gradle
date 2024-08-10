@@ -1,0 +1,4 @@
+rootProject.name = 'Buildo'
+include 'Engine'
+include 'Client'
+
