@@ -1,4 +1,4 @@
-package dev.mineplus.buildo.engine;
+package dev.mineplus.buildo.engine.window;
 
 import lombok.Getter;
 import lombok.Setter;
