@@ -16,9 +16,9 @@ public class SceneManager {
     public void setCurrentScene(@NonNull final Scene scene) {
         currentScene = scene;
 
-        System.out.println("Loading scene: " + scene.getClass().getName());
+        System.out.println("Loading scene: " + scene.getClass().getSimpleName());
         scene.initialize();
-        System.out.println("Loaded scene: " + scene.getClass().getName());
+        System.out.println("Loaded scene: " + scene.getClass().getSimpleName());
     }
 
     public void clearCurrentScene() {

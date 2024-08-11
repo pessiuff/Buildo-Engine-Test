@@ -32,6 +32,8 @@ public class Window {
     private Window() {
         windowProperties = new WindowProperties(1920, 1080, "Unnamed Window");
         sceneManager = new SceneManager();
+
+        initialize();
     }
 
     public static Window get() {
@@ -42,9 +44,7 @@ public class Window {
     }
 
     public void run() {
-        System.out.println("Using LWJGL version: " + Version.getVersion());
-
-        initialize();
+        // Application loop
         loop();
 
         // Free the window callbacks and destroy the window
@@ -59,6 +59,9 @@ public class Window {
     }
 
     private void initialize() {
+        // Print LWJGL version
+        System.out.println("Using LWJGL version: " + Version.getVersion());
+
         // Setup error callback
         GLFWErrorCallback.createPrint(System.err).set();
 
