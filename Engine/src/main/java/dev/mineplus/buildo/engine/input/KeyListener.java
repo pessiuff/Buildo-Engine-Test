@@ -7,9 +7,11 @@ public class KeyListener {
     private static KeyListener instance;
 
     private final boolean[] keysPressed;
+    private final boolean[] keysReleased;
 
     private KeyListener() {
         keysPressed = new boolean[350];
+        keysReleased = new boolean[350];
     }
 
     public static KeyListener get() {
@@ -25,10 +27,14 @@ public class KeyListener {
             return;
         }
 
-        if (action == GLFW_PRESS)
+        if (action == GLFW_PRESS) {
             get().keysPressed[key] = true;
-        else if (action == GLFW_RELEASE)
+            get().keysReleased[key] = false;
+        }
+        else if (action == GLFW_RELEASE) {
             get().keysPressed[key] = false;
+            get().keysReleased[key] = true;
+        }
     }
 
     public static boolean isKeyDown(final int key) {
@@ -38,5 +44,17 @@ public class KeyListener {
         }
 
         return get().keysPressed[key];
+    }
+
+    public static boolean isKeyUp(final int key) {
+        if (key + 1 > get().keysReleased.length) {
+            System.out.println("Tried using isKeyUp() for unhandled key: " + key);
+            return false;
+        }
+
+        final boolean result = get().keysReleased[key];
+        get().keysReleased[key] = false;
+
+        return result;
     }
 }
