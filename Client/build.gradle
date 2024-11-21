@@ -27,4 +27,5 @@ repositories {
 
 dependencies {
     implementation project(':Engine')
+    implementation 'io.herrera.kevin:resource:1.1.0'
 }
